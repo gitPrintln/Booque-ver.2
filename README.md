@@ -6,7 +6,7 @@ Java </br>
 SQL </br>
 Spring Boot </br>
 HTML/CSS/Java Script
-# 기간
+# 일정
 2023/01/16 ~ 2023/02/16 </br>
 # 특징
 중고 마켓 홈(검색, 중고 상품 CRUD, 이미지 업로드) </br>
