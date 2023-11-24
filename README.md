@@ -18,8 +18,8 @@ HTML/CSS/Java Script
 - 웹 소켓을 이용한 유저들간의 채팅(Stomp websocket)
 chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창을 통해서 유저1과 유저2의 서로 실시간 대화를 주고 받음을 테스트하고 본격적으로 프로젝트에서 사용할 채팅방을 구현함.
 
- SecurityConfig.java 일부
-```ruby
+> SecurityConfig.java 일부
+```java
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         // 메시지를 구독하는 요청 url prefix => 즉 메시지 받을 때 (subscribe, sub)
@@ -29,8 +29,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
         registry.setApplicationDestinationPrefixes("/app");
     }
 ```
- chat.js 일부
-```ruby
+> chat.js 일부
+```java
         var stompClient = null;
         var sender = $('#loginUser').val();
         var chatRoomId = $('#chatRoomId').val();
@@ -142,8 +142,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
         }
 ```
 
- ChattingController.java 일부
-```ruby
+> ChattingController.java 일부
+```java
 // 메시지 컨트롤러
 //    @MessageMapping("/chat/{userName}")
 //    public void sendMessage (@DestinationVariable String userName, Chatting chat) {
@@ -156,8 +156,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
 //    }
 ```
 초기 MessageMapping 형태에 대한 가닥을 잡음
- ChatController.java 일부
-```ruby
+> ChatController.java 일부
+```java
     @GetMapping("/chat")
     public void showChatWindow(@AuthenticationPrincipal UserSecurityDto userDto, Integer chatRoomId, Model model) throws IOException {
         log.info("챗창 오픈 Get Mapping");
@@ -196,8 +196,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
 
 - 마지막 채팅 가져오기
 
- ChatService.java 일부
-```ruby
+> ChatService.java 일부
+```java
     // (홍찬) 마지막 채팅 가져오기
     public String readLastThreeLines (Chat chat) throws IOException {
         // ChatReadDto recentChat = new ChatReadDto();
@@ -245,8 +245,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
     }
 ```
 
- ChatController.java 일부
-```ruby
+> ChatController.java 일부
+```java
         // 최신 메세지 내용 불러 오기
         List<String> cl = new ArrayList<>();
         for (Chat c : myChats) {
@@ -265,8 +265,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
 
 - 보낸(받은) 채팅에 대한 읽음/안읽음 관련 표시(안읽었으면 1, 읽었으면 사라짐)
 
- ChatAssist.java 일부
-```ruby
+> ChatAssist.java 일부
+```java
   @SequenceGenerator(name = "ChatAssist_SEQ_GEN", sequenceName = "ChatAssist_SEQ", initialValue = 1, allocationSize = 1)
   public class ChatAssist {
 
@@ -308,8 +308,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
   }
 ```
 
- chat.js 일부
-```ruby
+> chat.js 일부
+```java
       function connect() {
           var url2 = '/user/' + chatRoomId + '/queue/notification/'+ seller;
           stompClient.connect({}, function() { 
@@ -384,8 +384,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
             } 
         }
 ```
- ChattingController.java 일부
-```ruby
+> ChattingController.java 일부
+```java
     // (홍찬) 메세지 알림을 위해 읽음 푸시
     @MessageMapping("/chat/read/{chatRoomId}")
     public void notification(@DestinationVariable Integer chatRoomId, ChatReadDto dto) throws IOException {
@@ -431,8 +431,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
         }
     }
 ```
- ChatController.java 일부
-```ruby
+> ChatController.java 일부
+```java
     @GetMapping("/chat")
     public void showChatWindow(@AuthenticationPrincipal UserSecurityDto userDto, Integer chatRoomId, Model model) throws IOException { 
 
@@ -478,8 +478,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
             model.addAttribute("unreadInfo", unreadInfo);
     }
 ```
- ChatService.java 일부
-```ruby
+> ChatService.java 일부
+```java
     // 안읽은 메세지 저장(안읽음=1, 읽음=0)
     public Integer updateReadChat(String nickName, Integer chatRoomId, Integer unread) {
         ChatAssist entity = chatAssistRepository.findByChatRoomId(chatRoomId);
