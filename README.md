@@ -199,7 +199,8 @@ chat2.js에서 전체적인 웹소켓 연결을 통해 google창과 시크릿창
 채팅 목록 불러오기 형태에 대한 가닥을 잡음
 
 - 마지막 채팅 가져오기 </br></br>
-![부끄2 마지막채팅](https://github.com/gitPrintln/Booque-ver.2/assets/117698468/e6d50cb7-a79c-45b4-b6ba-e3ac456e8c75)
+![부끄 마지막채팅](https://github.com/gitPrintln/Booque-ver.2/assets/117698468/4131b7d9-9ce1-47ab-9a95-900394535dfe)
+
 
 > ChatService.java 일부
 ```java
